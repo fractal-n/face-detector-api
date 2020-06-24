@@ -39,6 +39,7 @@ app.get("/profile/:id", (req, res) => handleProfileGet(req, res, db));
 app.patch("/image", (req, res) => handleImage(req, res, db));
 app.post("/image", (req, res) => handleClarifaiApiCall(req, res));
 
-app.listen(3000, () => {
-  console.log("listening on port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`listening on port ${PORT}`);
 });
