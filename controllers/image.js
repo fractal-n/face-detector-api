@@ -1,3 +1,5 @@
+import Clarifai from "clarifai";
+
 export function handleImage(req, res, db) {
   const { id } = req.body;
   db("users")
@@ -12,4 +14,18 @@ export function handleImage(req, res, db) {
       }
     })
     .catch((err) => res.status(400).json("error updating entries"));
+}
+
+const clarifai = new Clarifai.App({
+  apiKey: "2eb922025c064b108a239789a222134d",
+});
+
+export function handleClarifaiApiCall(req, res) {
+  const { input } = req.body;
+  clarifai.models
+    .predict(Clarifai.DEMOGRAPHICS_MODEL, input)
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((err) => res.status(400).json("unable to work with API"));
 }

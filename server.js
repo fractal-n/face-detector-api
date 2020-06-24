@@ -6,7 +6,7 @@ import knex from "knex";
 import { handleRegister } from "./controllers/register.js";
 import { handleSignIn } from "./controllers/signin.js";
 import { handleProfileGet } from "./controllers/profile.js";
-import { handleImage } from "./controllers/image.js";
+import { handleImage, handleClarifaiApiCall } from "./controllers/image.js";
 
 const db = knex({
   client: "pg",
@@ -37,6 +37,7 @@ app.post("/register", (req, res) =>
 );
 app.get("/profile/:id", (req, res) => handleProfileGet(req, res, db));
 app.patch("/image", (req, res) => handleImage(req, res, db));
+app.post("/image", (req, res) => handleClarifaiApiCall(req, res));
 
 app.listen(3000, () => {
   console.log("listening on port 3000");
