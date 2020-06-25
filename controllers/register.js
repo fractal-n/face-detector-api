@@ -2,6 +2,7 @@ export function handleRegister(req, res, db, bcrypt, saltRounds) {
   const { email, name, password } = req.body;
 
   if (!email || !name || !password) {
+    console.log(`email ${email}, name ${name}. pass ${password}`);
     return res.status(400).json("incorrect form submission");
   }
 
