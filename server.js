@@ -8,6 +8,10 @@ import { handleSignIn } from "./controllers/signin.js";
 import { handleProfileGet } from "./controllers/profile.js";
 import { handleImage, handleClarifaiApiCall } from "./controllers/image.js";
 
+// Disable ssl validation. This is not good in production,
+// but it's fine for this personal project. I think it's due to free version of Heroku.
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
 const db = knex({
   client: "pg",
   connection: {
@@ -24,8 +28,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get("/", (req, res) => {
-  console.log("got here ", req.url);
-
   db("users")
     .select("*")
     .then((users) => res.send(users))
