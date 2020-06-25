@@ -26,7 +26,8 @@ app.use(cors());
 app.get("/", (req, res) => {
   db("users")
     .select("*")
-    .then((users) => res.send(users));
+    .then((users) => res.send(users))
+    .catch((err) => res.status(400).json("error getting users"));
 });
 
 app.post("/signin", (req, res) => handleSignIn(req, res, db, bcrypt));
