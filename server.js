@@ -24,10 +24,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get("/", (req, res) => {
+  console.log("got here ", req.url);
+
   db("users")
     .select("*")
     .then((users) => res.send(users))
-    .catch((err) => res.status(400).json("error getting users"));
+    .catch((err) => res.status(400).json(err));
 });
 
 app.post("/signin", (req, res) => handleSignIn(req, res, db, bcrypt));
