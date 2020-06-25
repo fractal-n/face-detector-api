@@ -31,16 +31,24 @@ app.get("/", (req, res) => {
   db("users")
     .select("*")
     .then((users) => res.send(users))
-    .catch((err) => res.status(400).json(err));
+    .catch((err) => res.status(400).json("unable getting users"));
 });
 
-app.post("/signin", (req, res) => handleSignIn(req, res, db, bcrypt));
-app.post("/register", (req, res) =>
-  handleRegister(req, res, db, bcrypt, saltRounds)
-);
-app.get("/profile/:id", (req, res) => handleProfileGet(req, res, db));
-app.patch("/image", (req, res) => handleImage(req, res, db));
-app.post("/image", (req, res) => handleClarifaiApiCall(req, res));
+app.post("/signin", (req, res) => {
+  handleSignIn(req, res, db, bcrypt);
+});
+app.post("/register", (req, res) => {
+  handleRegister(req, res, db, bcrypt, saltRounds);
+});
+app.get("/profile/:id", (req, res) => {
+  handleProfileGet(req, res, db);
+});
+app.patch("/image", (req, res) => {
+  handleImage(req, res, db);
+});
+app.post("/image", (req, res) => {
+  handleClarifaiApiCall(req, res);
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
