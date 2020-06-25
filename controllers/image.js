@@ -17,7 +17,7 @@ export function handleImage(req, res, db) {
 }
 
 const clarifai = new Clarifai.App({
-  apiKey: "2eb922025c064b108a239789a222134d",
+  apiKey: process.env.CLARIFAI_API_KEY,
 });
 
 export function handleClarifaiApiCall(req, res) {
