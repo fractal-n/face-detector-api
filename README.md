@@ -27,11 +27,31 @@ CREATE TABLE users (
 );
 ```
 
+### Useful PostgreSQL commands for Heroku
+
+```bash
+# open psql
+heroku pg:psql
+
+# quit psql
+\q
+```
+
 ## Environment variables
 
 - DATABASE_URL
 - CLARIFAI_API_KEY = "2eb922025c064b108a239789a222134d"
 
+Note that **NODE_TLS_REJECT_UNAUTHORIZED** is currently disabled. This could be due to free version of Heroku allow only self signed certificates, which is not allowed by the Node engine.
+
 ## Deployment
 
-Heroku
+This app is hosted on Heroku. Useful commands to work with Heroku.
+
+```bash
+# deploy to Heroku
+git push heroku master
+
+# show logs
+heroku logs --tail
+```
