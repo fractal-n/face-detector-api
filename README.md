@@ -2,7 +2,7 @@
 
 ## About
 
-This is the backend server for face-detector app.
+This is the backend server for face-detector app. Go to [face-detector](https://github.com/fractal-n/face-detector) repo for more details.
 
 ## Tech stack
 
@@ -40,7 +40,7 @@ heroku pg:psql
 ## Environment variables
 
 - DATABASE_URL
-- CLARIFAI_API_KEY = "2eb922025c064b108a239789a222134d"
+- CLARIFAI_API_KEY
 
 Note that **NODE_TLS_REJECT_UNAUTHORIZED** is currently disabled. This could be due to free version of Heroku allow only self signed certificates, which is not allowed by the Node engine.
 
