@@ -26,9 +26,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get("/", (req, res) => {
-  db("users")
-    .select("*")
-    .then((users) => res.send(users));
+  // db("users")
+  //   .select("*")
+  //   .then((users) => res.send(users));
+  res.send("working");
 });
 
 app.post("/signin", (req, res) => handleSignIn(req, res, db, bcrypt));
